@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Toko Online Albaikal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgb(255, 0, 0) 15, 15;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      color: white;
+    }
+
+    #cart {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .product {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      width: 220px;
+      color: white;
+      text-align: center;
+      backdrop-filter: blur(3px);
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+
+    .product p {
+      margin: 0 0 10px;
+    }
+
+    .product button {
+      padding: 10px 15px;
+      background-color: #25D366;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #1ebd5f;
+    }
+
+    footer {
+      text-align: center;
+      color: #ccc;
+      padding: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <header>
+    <h1>Toko Online Albaika</h1>
+    <div id="cart">🛒 Keranjang: <span id="cart-count">0</span></div>
+  </header>
+
+  <section class="products">
+    <div class="product">
+      <img src="warrior-classic-hc-high-hitam-putih-black-white-1-sepatu-sekolah.jpg" alt="Sepatu">
+      <h3>Sepatu Keren</h3>
+      <p>Rp 250.000</p>
+      <button onclick="orderViaWhatsApp('Sepatu Keren', 250000)">Pesan via WhatsApp</button>
+    </div>
+
+    <div class="product">
+      <img src="88179ebe40fc19775c9dd2288e2d2cf6.jpg" alt="Kaos">
+      <h3>Kaos Polos</h3>
+      <p>Rp 90.000</p>
+      <button onclick="orderViaWhatsApp('Kaos Polos', 90000)">Pesan via WhatsApp</button>
+    </div>
+
+    <div class="product">
+      <img src="265593d4a930c983041f16181c53facf.jfif" alt="Tas">
+      <h3>Tas Ransel</h3>
+      <p>Rp 180.000</p>
+      <button onclick="orderViaWhatsApp('Tas Ransel', 180000)">Pesan via WhatsApp</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Toko Online Albaika Order Via Whattsap ❤️
+  </footer>
+
+  <!-- === WhatsApp Order Script === -->
+  <script>
+    let cartCount = 0;
+
+    function orderViaWhatsApp(product, price) {
+      cartCount++;
+      document.getElementById("cart-count").textContent = cartCount;
+
+      const phoneNumber = '6281234567890'; // Ganti dengan nomor WhatsApp kamu
+      const message = `Halo! Saya ingin pesan:\n\n📦 Produk: ${product}\n💰 Harga: Rp ${price.toLocaleString()}\n\nSilakan lanjutkan pesanan.`;
+      const url = `https://wa.me/${+6285921747385}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+  <!-- === Particles JS CDN === -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": { "value": "#ffffff" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "out_mode": "bounce"
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>
